@@ -14,7 +14,40 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<!-- Home HTML -->
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+			<ul>
+				<li>
+					<span>Ann Arbor</span><br/>
+					<span>Michigan</span><br/>
+					<span>Pets: One cat</span><br/>
+					<span>Capacity: 4 people</span><br/>
+					<span>THUMB ICON</span>
+				</li>
+				<li>
+					<span>Ann Arbor</span><br/>
+					<span>Michigan</span><br/>
+					<span>Pets: One cat</span><br/>
+					<span>Capacity: 4 people</span><br/>
+					<span>THUMB ICON</span>
+				</li>
+				<li>
+					<span>Ann Arbor</span><br/>
+					<span>Michigan</span><br/>
+					<span>Pets: One cat</span><br/>
+					<span>Capacity: 4 people</span><br/>
+					<span>THUMB ICON</span>
+				</li>
+				<li>
+					<span>Ann Arbor</span><br/>
+					<span>Michigan</span><br/>
+					<span>Pets: One cat</span><br/>
+					<span>Capacity: 4 people</span><br/>
+					<span>THUMB ICON</span>
+				</li>
+			</ul>
+		</main><!-- #main -->
+	</div><!-- #primary -->
 
 <?php
 get_footer();

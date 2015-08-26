@@ -32,4 +32,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div id="wrapper">
 
-	<!-- Header HTML -->
+	<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+			<?php
+			$description = get_bloginfo( 'description', 'display' );
+			if ( $description || is_customize_preview() ) : ?>
+				<p class="site-description"><?php echo $description; ?></p>
+			<?php endif; ?>
+		</div><!-- .site-branding -->
+	</header><!-- .site-header -->
