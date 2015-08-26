@@ -41,10 +41,9 @@ WordCrash theme functionality.
             var user_ID = $(this).data('user-id');
             console.log(user_ID);
 
-            // Again, make sure we have what we need before proceeding. Also, using `return true;` is how we "continue"
-            // iterating through a jQuery.each() loop
+            // Again, make sure we have what we need before proceeding
             if (!user_ID) {
-                return true;
+                return;
             }
 
             $input_to_alter.val(user_ID);
