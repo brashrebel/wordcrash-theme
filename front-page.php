@@ -16,43 +16,48 @@ get_header();
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<ul>
+			
+			<h3 class="instructions">Give them a <i class="fa fa-thumbs-up"></i> to see if you can crash with them!</h3>
+			
+			<ul class="crash-pad-list small-block-grid-4">
 				<li>
-					<span>Ann Arbor</span><br/>
-					<span>Michigan</span><br/>
-					<span>Pets: One cat</span><br/>
-					<span>Capacity: 4 people</span><br/>
-					<a href="#" data-reveal-id="gf-ping-form">THUMB ICON</a>
+					<div class="crash-pad">
+						<h2>Ann Arbor</h2>
+						<h3>Michigan</h3>
+						<p><strong>Pets:</strong> One cat<br/>
+							<strong>Capacity:</strong> 4 people</p>
+						<i class="fa fa-thumbs-up"></i>
+					</div>
 				</li>
 				<li>
-					<span>Ann Arbor</span><br/>
-					<span>Michigan</span><br/>
-					<span>Pets: One cat</span><br/>
-					<span>Capacity: 4 people</span><br/>
-					<span>THUMB ICON</span>
+					<div class="crash-pad">
+						<h2>Ann Arbor</h2>
+						<h3>Michigan</h3>
+						<p><strong>Pets:</strong> One cat<br/>
+							<strong>Capacity:</strong> 4 people</p>
+						<i class="fa fa-thumbs-up"></i>
+					</div>
 				</li>
 				<li>
-					<span>Ann Arbor</span><br/>
-					<span>Michigan</span><br/>
-					<span>Pets: One cat</span><br/>
-					<span>Capacity: 4 people</span><br/>
-					<span>THUMB ICON</span>
+					<div class="crash-pad">
+						<h2>Ann Arbor</h2>
+						<h3>Michigan</h3>
+						<p><strong>Pets:</strong> One cat<br/>
+							<strong>Capacity:</strong> 4 people</p>
+						<i class="fa fa-thumbs-up"></i>
+					</div>
 				</li>
 				<li>
-					<span>Ann Arbor</span><br/>
-					<span>Michigan</span><br/>
-					<span>Pets: One cat</span><br/>
-					<span>Capacity: 4 people</span><br/>
-					<span>THUMB ICON</span>
+					<div class="crash-pad">
+						<h2>Ann Arbor</h2>
+						<h3>Michigan</h3>
+						<p><strong>Pets:</strong> One cat<br/>
+							<strong>Capacity:</strong> 4 people</p>
+						<i class="fa fa-thumbs-up"></i>
+					</div>
 				</li>
 			</ul>
 		</main><!-- #main -->
-		<div id="gf-ping-form" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-			<h2 id="modalTitle">Awesome. I have it.</h2>
-			<p class="lead">Your couch.  It is mine.</p>
-			<p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
-			<a class="close-reveal-modal" aria-label="Close">&#215;</a>
-		</div>
 	</div><!-- #primary -->
 
 <?php

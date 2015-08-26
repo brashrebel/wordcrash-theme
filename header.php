@@ -24,15 +24,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<!--[if lt IE 9]>
 	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/vendor/js/html5.js"></script>
 	<![endif]-->
+
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 
-<div id="wrapper">
+<div id="wrapper" class="container">
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
+				<img src="<?php bloginfo('template_url'); ?>/assets/images/wordpress-logo.png" alt="WordPress">
 				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
 			<?php
 			$description = get_bloginfo( 'description', 'display' );
