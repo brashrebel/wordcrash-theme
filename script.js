@@ -7,6 +7,8 @@ WordCrash theme functionality.
 (function ($) {
     'use strict';
 
+    $(document).foundation();
+
     // Put your functionality here!
 
 })(jQuery);

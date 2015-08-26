@@ -24,9 +24,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<!--[if lt IE 9]>
 	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/vendor/js/html5.js"></script>
 	<![endif]-->
-	<script>
-		$(document).foundation();
-	</script>
 	<?php wp_head(); ?>
 </head>
 
