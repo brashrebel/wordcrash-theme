@@ -60,6 +60,6 @@ WordCrash theme functionality.
 
             $input_to_alter.val('');
         });
-    })
+    });
 
 })(jQuery);
