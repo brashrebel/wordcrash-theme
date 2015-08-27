@@ -50,7 +50,7 @@ function _wordcrash_setup_theme() {
 	require_once __DIR__ . '/includes/theme-support.php';
 
 	// Allow shortcodes in text widget
-	add_filter('widget_text', 'do_shortcode');
+	add_filter( 'widget_text', 'do_shortcode' );
 }
 
 /**
@@ -126,7 +126,7 @@ function _wordcrash_register_scripts() {
 		array(),
 		defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : '2.0.9'
 	);
-	
+
 	/**
 	 * Fonts for the theme. Must be hosted font (Google fonts for example).
 	 *
@@ -134,7 +134,7 @@ function _wordcrash_register_scripts() {
 	 */
 	$wordcrash_fonts = apply_filters( 'wordcrash_fonts', array(
 		'font-awesome' => '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
-	));
+	) );
 
 	if ( ! empty( $wordcrash_fonts ) ) {
 		foreach ( $wordcrash_fonts as $ID => $link ) {
@@ -169,11 +169,10 @@ function _wordcrash_load_scripts() {
 	/** Explained above */
 	$wordcrash_fonts = apply_filters( 'wordcrash_fonts', array(
 		'font-awesome' => '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
-	));
-	
-	wp_enqueue_style('sigmar','//fonts.googleapis.com/css?family=Sigmar+One');
-	
-	
+	) );
+
+	wp_enqueue_style( 'sigmar', '//fonts.googleapis.com/css?family=Sigmar+One' );
+
 
 	if ( ! empty( $wordcrash_fonts ) ) {
 		foreach ( $wordcrash_fonts as $ID => $link ) {
@@ -215,7 +214,7 @@ function _wordcrash_load_sidebars() {
 
 /**
  * Adds a favicon.
- * 
+ *
  * @since 0.1.0
  */
 function _wordcrash_load_favicon() {
@@ -224,8 +223,8 @@ function _wordcrash_load_favicon() {
 		return;
 	}
 	?>
-	<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri() . '/assets/images/favicon.ico'; ?>" />
-<?php
+	<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri() . '/assets/images/favicon.ico'; ?>"/>
+	<?php
 }
 
 // Include shortcodes

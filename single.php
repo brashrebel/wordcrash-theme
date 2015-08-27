@@ -16,7 +16,7 @@ get_header();
 the_post();
 ?>
 
-<!-- Single HTML -->
+	<!-- Single HTML -->
 
 <?php
 get_footer();

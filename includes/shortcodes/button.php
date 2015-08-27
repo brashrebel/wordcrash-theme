@@ -19,9 +19,9 @@ add_action( 'init', function () {
 function wordcrash_sc_button( $atts = array(), $content = '' ) {
 
 	$atts = shortcode_atts( array(
-		'link' => '#',
-		'size' => '', // {tiny, small, large}
-		'type' => '', // {secondary},
+		'link'   => '#',
+		'size'   => '', // {tiny, small, large}
+		'type'   => '', // {secondary},
 		'expand' => 'no',
 	), $atts );
 

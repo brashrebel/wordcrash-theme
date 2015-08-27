@@ -34,14 +34,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" id="logo">
-					<?php get_template_part('assets/images/WordCrash.svg'); ?>
-				</a>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" id="logo">
+				<?php get_template_part( 'assets/images/WordCrash.svg' ); ?>
+			</a>
+
+			<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
+			                         rel="home"><?php bloginfo( 'name' ); ?></a></p>
 			<?php
 			$description = get_bloginfo( 'description', 'display' );
 			if ( $description || is_customize_preview() ) : ?>
 				<p class="site-description"><?php echo $description; ?></p>
 			<?php endif; ?>
-		</div><!-- .site-branding -->
-	</header><!-- .site-header -->
+		</div>
+		<!-- .site-branding -->
+	</header>
+	<!-- .site-header -->

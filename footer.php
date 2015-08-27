@@ -16,9 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div id="primary-navigation" class="primary-navigation" role="navigation">
 		<?php
 		wp_nav_menu( array(
-			'theme_location'	=> 'primary',
-			'menu_class'		=> 'primary-navigation',
-			'fallback_cb'		=> '__return_false',
+			'theme_location' => 'primary',
+			'menu_class'     => 'primary-navigation',
+			'fallback_cb'    => '__return_false',
 		) );
 		?>
 	</div><!-- #info-bar-navigation -->
