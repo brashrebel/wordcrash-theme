@@ -51,6 +51,12 @@ body.home #masthead {
     font-family: 'Sigmar One';
 }
 
+@media only screen and (max-width: 40em) {
+    .site-title a {
+        font-size: 30px;
+    }
+}
+
 .site-description {
     color: #fff;
     font-size: 18px;
@@ -61,12 +67,24 @@ body.home .site-description {
     font-size: 36px;
 }
 
+@media only screen and (max-width: 40em) {
+    body.home .site-description {
+        font-size: 24px;
+    }
+}
+
 .instructions {
     font-weight: 100;
     font-size: 24px;
     color: #333;
     text-align: center;
     margin-bottom: 25px;
+}
+
+@media only screen and (max-width: 40em) {
+    .instructions {
+        font-size: inherit;
+    }
 }
 
 .crash-pad-list {
@@ -128,6 +146,18 @@ body.home .site-description {
     color: #fff;
 }
 
+@media only screen and (max-width: 40em) {
+    .instructions .fa-thumbs-up {
+        font-size: 17px;
+        padding: 10px;
+    }
+
+    .crash-pad-list .fa-thumbs-up {
+        font-size: 60px;
+        padding: 25px;
+    }
+}
+
 .crash-pad-list .fa-thumbs-up:hover {
     cursor: pointer;
     opacity: 0.8;
@@ -152,6 +182,14 @@ body.home .site-description {
     border-right: 1px solid #ddd;
 }
 
+@media only screen and (max-width: 40em) {
+    #primary-navigation li {
+        display: block;
+        border: none;
+        margin: 1em 0;
+    }
+}
+
 #primary-navigation li:last-child {
     border-right: 0px;
 }
@@ -167,3 +205,8 @@ body.home .site-description {
     margin: 0 auto 50px auto;
 }
 
+@media only screen and (max-width: 40em) {
+    .gform_wrapper input[type="text"] {
+        width: 100% !important;
+    }
+}
