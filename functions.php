@@ -126,7 +126,7 @@ function _wordcrash_register_scripts() {
 		array(),
 		defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : '2.0.9'
 	);
-
+	
 	/**
 	 * Fonts for the theme. Must be hosted font (Google fonts for example).
 	 *
@@ -170,6 +170,10 @@ function _wordcrash_load_scripts() {
 	$wordcrash_fonts = apply_filters( 'wordcrash_fonts', array(
 		'font-awesome' => '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
 	));
+	
+	wp_enqueue_style('sigmar','//fonts.googleapis.com/css?family=Sigmar+One');
+	
+	
 
 	if ( ! empty( $wordcrash_fonts ) ) {
 		foreach ( $wordcrash_fonts as $ID => $link ) {

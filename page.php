@@ -15,6 +15,20 @@ get_header();
 
 the_post();
 ?>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+			
+			<div class="row">
+				<div id="article-content" class="large-8 columns large-offset-2">	
+					
+					<h1><?php the_title(); ?></h1>
+				
+					<?php the_content(); ?>
+				</div>
+			</div>
+				
+		</main>
+	</div>
 
 <!-- Page HTML -->
 
