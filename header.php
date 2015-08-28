@@ -49,3 +49,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<!-- .site-branding -->
 	</header>
 	<!-- .site-header -->
+
+<?php if ( has_nav_menu( 'primary' ) ) : ?>
+	<div id="primary-navigation" class="primary-navigation" role="navigation">
+		<?php
+		wp_nav_menu( array(
+			'theme_location' => 'primary',
+			'menu_class'     => 'primary-navigation',
+			'fallback_cb'    => '__return_false',
+		) );
+		?>
+	</div><!-- #info-bar-navigation -->
+<?php endif; ?>
