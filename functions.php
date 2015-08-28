@@ -24,7 +24,7 @@ if ( defined( 'THEME_VERSION' ) || defined( 'THEME_ID' ) || isset( $wordcrash_fo
 /**
  * The theme's current version (make sure to keep this up to date!)
  */
-define( 'THEME_VERSION', '0.1.0' );
+define( 'THEME_VERSION', '1.0.0' );
 
 /**
  * The theme's ID (used in handlers).
