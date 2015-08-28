@@ -14,7 +14,9 @@ html,
 body {
     margin: 0;
     padding: 0;
+    color: #333;
     background: #f3f3f3;
+    font-size: 16px;
     font-family: 'Open Sans';
 }
 
@@ -73,10 +75,21 @@ body.home .site-description {
     }
 }
 
+.site-summary {
+    font-weight: 100;
+    color: #fff;
+    background: #bd071f;
+    padding: 1em;
+    margin: 2em 0;
+}
+
+.site-summary p {
+    margin: 0;
+}
+
 .instructions {
     font-weight: 100;
     font-size: 24px;
-    color: #333;
     text-align: center;
     margin-bottom: 25px;
 }

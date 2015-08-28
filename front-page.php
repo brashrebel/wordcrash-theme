@@ -13,12 +13,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
+the_post();
+
 $user_query = new WP_User_Query( array( 'role' => 'Subscriber' ) );
 $users      = $user_query->get_results();
 ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+
+			<?php if ( $extra_description = get_post_meta( get_the_ID(), 'wordcrash_extra_description', true ) ) : ?>
+				<div class="site-summary">
+					<div class="row">
+						<div class="columns small-12">
+							<?php echo wpautop( $extra_description ); ?>
+						</div>
+					</div>
+				</div>
+			<?php endif; ?>
 
 			<h3 class="instructions">Give them a <i class="fa fa-thumbs-up"></i> to see if you can crash with them!</h3>
 			<?php if ( ! empty( $user_query ) ) { ?>
@@ -47,7 +59,11 @@ $users      = $user_query->get_results();
 		<div id="gf-ping-form" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true"
 		     role="dialog">
 			<h2 id="modalTitle">Contact this host</h2>
-			<?php gravity_form( 3 ); ?>
+			<?php
+			if ( function_exists( 'gravity_form' ) ) {
+				gravity_form( 3 );
+			}
+			?>
 			<a class="close-reveal-modal" aria-label="Close">&#215;</a>
 		</div>
 	</div><!-- #primary -->

@@ -232,3 +232,6 @@ require_once __DIR__ . '/includes/shortcodes/button.php';
 
 // Include theme specific functions
 require_once __DIR__ . '/includes/theme-functions.php';
+
+// Admin
+require_once __DIR__ . '/admin/admin.php';
