@@ -4,7 +4,7 @@ Theme URI: https://github.com/brashrebel/wordcrash-theme
 Author: WP Ann Arbor
 Author URI: https://wpannarbor.com/
 Description: Theme for WordCrash.net.
-Version: 0.1
+Version: 1.0.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: wordcrash
@@ -31,9 +31,7 @@ body {
 #primary-navigation {
     padding: 10px;
     background: #f6f6f6;
-    box-shadow: 0 0 15px rgba(0, 0, 0, .35);
     text-align: center;
-    margin-bottom: 30px;
 }
 
 #primary-navigation ul {
@@ -118,7 +116,8 @@ body.home .site-description {
     color: #fff;
     background: #bd071f;
     padding: 1em;
-    margin: 2em 0;
+    margin: 0 0 2em 0;
+    text-align: center;
 }
 
 .site-summary p {
