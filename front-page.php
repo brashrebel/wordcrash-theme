@@ -32,7 +32,8 @@ $users      = $user_query->get_results();
 				</div>
 			<?php endif; ?>
 
-			<h3 class="instructions">Give them a <i class="fa fa-thumbs-up"></i> to see if you can crash with them!</h3>
+<!--			<h3 class="instructions">Give them a <i class="fa fa-thumbs-up"></i> to see if you can crash with them!</h3>-->
+
 			<?php if ( ! empty( $user_query ) ) { ?>
 				<ul class="crash-pad-list small-block-grid-1 medium-block-grid-2 large-block-grid-4 user-grid">
 					<?php foreach ( $users as $user ) {
