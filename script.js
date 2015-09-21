@@ -35,7 +35,12 @@
             if (value != '0') {
                 $hosts.shuffle('shuffle', value);
             } else {
-                $hosts.shuffle('shuffle', 'all');
+
+                if ($(this).attr('name') == 'filter-hosts-city') {
+                    $hosts.shuffle('shuffle', $filters.find('[name="filter-hosts-state"]').val());
+                } else {
+                    $hosts.shuffle('shuffle', 'all');
+                }
             }
         });
 
