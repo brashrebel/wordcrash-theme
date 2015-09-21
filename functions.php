@@ -135,6 +135,7 @@ function _wordcrash_register_scripts() {
 	$wordcrash_fonts = apply_filters( 'wordcrash_fonts', array(
 		'font-awesome' => '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
 		'open-sans' => 'https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic',
+		'sigmar' => '//fonts.googleapis.com/css?family=Sigmar+One',
 	) );
 
 	if ( ! empty( $wordcrash_fonts ) ) {
@@ -171,10 +172,8 @@ function _wordcrash_load_scripts() {
 	$wordcrash_fonts = apply_filters( 'wordcrash_fonts', array(
 		'font-awesome' => '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
 		'open-sans' => 'https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic',
+		'sigmar' => '//fonts.googleapis.com/css?family=Sigmar+One',
 	) );
-
-	wp_enqueue_style( 'sigmar', '//fonts.googleapis.com/css?family=Sigmar+One' );
-
 
 	if ( ! empty( $wordcrash_fonts ) ) {
 		foreach ( $wordcrash_fonts as $ID => $link ) {

@@ -47,8 +47,10 @@ $users      = $user_query->get_results();
 								<p><strong>Pets:</strong> <?php echo get_user_meta( $user->ID, 'pets', true ); ?><br/>
 									<strong>Capacity:</strong> <?php echo get_user_meta( $user->ID, 'capacity', true ); ?>
 								</p>
-								<a href="#" class="modal-trigger" data-user-id="<?php echo $user->ID; ?>"
-								   data-reveal-id="gf-ping-form"><i class="fa fa-thumbs-up"></i></a>
+								<a href="#" class="modal-trigger button" data-user-id="<?php echo $user->ID; ?>"
+								   data-reveal-id="gf-ping-form">
+									Contact Host
+								</a>
 							</div>
 						</li>
 					<?php } ?>
