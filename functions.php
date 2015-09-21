@@ -77,6 +77,14 @@ function _wordcrash_register_scripts() {
 		true
 	);
 
+	// Shuffle
+	wp_register_script(
+		'shuffle',
+		get_template_directory_uri() . '/assets/vendor/js/jquery.shuffle.min.js',
+		array(),
+		defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : '3.0.0'
+	);
+
 	// FOUNDATION
 	wp_register_style(
 		'foundation',
@@ -160,6 +168,9 @@ function _wordcrash_load_scripts() {
 
 	// Theme script
 	wp_enqueue_script( THEME_ID );
+
+	// Shuffle
+	wp_enqueue_script( 'shuffle' );
 
 	// FOUNDATION
 	wp_enqueue_script( 'foundation' );

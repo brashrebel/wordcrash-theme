@@ -8,39 +8,95 @@
 
     $(document).foundation();
 
-    // Put your functionality here!
-
-    // This is jQuery's default way of waiting until the page loads. Wrap anything that interacts with the DOM in one of
-    // these closures
+    // Init hosts shuffle
     $(function () {
 
-        // Best to store this DOM element for quick reference, also so we don't have to look it up more than once
+        var $hosts = $('.crash-pad-list');
+
+        $hosts.shuffle();
+    });
+
+    // Filter hosts
+    $(function () {
+
+        var $filters = $('.filter-hosts'),
+            $hosts = $('.crash-pad-list'),
+            cities = {};
+
+        if (!$filters.length) {
+            return;
+        }
+
+        // Generic filter
+        $filters.find('select').change(function () {
+
+            var value = $(this).val();
+
+            if (value != '0') {
+                $hosts.shuffle('shuffle', value);
+            } else {
+                $hosts.shuffle('shuffle', 'all');
+            }
+        });
+
+        // City state relationship
+        $filters.find('[name="filter-hosts-city"] option').each(function () {
+
+            var state = $(this).data('state');
+
+            if (!state) {
+                return true;
+            }
+
+            if (!cities[state]) {
+                cities[state] = [];
+            }
+
+            cities[state].push($(this).val());
+
+            $(this).remove();
+        });
+
+        $filters.find('[name="filter-hosts-state"]').change(function () {
+
+            var state = $(this).val(),
+                i;
+
+            if (state == '0') {
+                return;
+            }
+
+            $filters.find('[name="filter-hosts-city"]').find('option[value!="0"]').remove();
+
+            for (i = 0; i < cities[state].length; i++) {
+                $filters.find('[name="filter-hosts-city"]').append($("<option></option>")
+                        .attr("value",cities[state][i])
+                        .text(cities[state][i]));
+            }
+        });
+    });
+
+    // Send user ID to GF form when trying to contact a host
+    $(function () {
+
         var $user_grid = $('.user-grid'),
             $modal = $('#gf-ping-form'),
-            $input_to_alter; // Init our var here instead of later (just JS best practice to init all usable variables
-                             // at the top of each closure
+            $input_to_alter;
 
-        // Make sure everything exists before doing ANYTHING!
         if (!$user_grid.length || !$modal.length) {
             return;
         }
 
-        // Now that we know the $modal exists, try to find the input to alter (this would be the hidden input in the GF)
         $input_to_alter = $modal.find('#input_3_1');
 
-        // Again, bail if we don't have what we need
         if (!$input_to_alter.length) {
             return;
         }
 
-        // Fire this function when clicking a trigger
         $user_grid.find('.modal-trigger').click(function () {
 
-            // This is how we grab the `data-user-id` attr. Alternatively, we could use `$(this).attr('data-user-id');`
             var user_ID = $(this).data('user-id');
-            console.log(user_ID);
 
-            // Again, make sure we have what we need before proceeding
             if (!user_ID) {
                 return;
             }
@@ -48,10 +104,8 @@
             $input_to_alter.val(user_ID);
         });
 
-        // It would be wise to erase the ID value once we close the form, to avoid any weirdness
         $(document).on('close.fndtn.reveal', '[data-reveal]', function () {
 
-            // Make sure this is the right modal before continuing
             if (!$(this).is("#gf-ping-form")) {
                 return;
             }
