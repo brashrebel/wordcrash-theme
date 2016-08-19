@@ -51,7 +51,7 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 						$countries[ $country ][ ucwords( $state ) ][ $city ] = array();
 					}
 
-					if ( ! in_array( $city, $countries[ $country ][ ucwords( $state ) ][ $city ] ) ) {
+					if ( ! in_array( $city, $countries[ $country ][ ucwords( $state ) ] ) ) {
 						$countries[ $country ][ ucwords( $state ) ][ $city ] = ucwords( $city );
 					}
                     
