@@ -55,14 +55,24 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 						$countries[ $country ][ ucwords( $state ) ][ $city ] = ucwords( $city );
 					}
                     
-				}
+                }
 
-				asort( $countries );
-				foreach ( $countries as $states ) {
+				ksort( $countries );
+            
+				// USA at the top            
+				if ( isset( $countries['United States of America'] ) ) {
                     
-					sort( $states );
+					$usa = $countries['United States of America'];
+					unset( $countries['United States of America'] );
                     
-					foreach( $states as $cities ) {
+					$countries = array( 'United States of America' => $usa ) + $countries;
+                    
+				}
+            
+				foreach ( $countries as &$states ) {
+					ksort( $states );
+                    
+					foreach( $states as &$cities ) {
                         
 						sort( $cities );
                         
