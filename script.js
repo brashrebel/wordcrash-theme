@@ -44,39 +44,67 @@
             }
         });
 
-        // City state relationship
+        // City, state, country relationship
         $filters.find('[name="filter-hosts-city"] option').each(function () {
 
-            var state = $(this).data('state');
+            var country = $(this).data('country'),
+                state = $(this).data('state');
 
-            if (!state) {
+            if (!country) {
                 return true;
             }
 
-            if (!cities[state]) {
-                cities[state] = [];
+            if (!cities[country]) {
+                cities[country] = [];
+            }
+            
+            if (!cities[country][state]) {
+                cities[country][state] = [];
             }
 
-            cities[state].push($(this).val());
+            cities[country][state].push($(this).val());
 
             $(this).remove();
+        });
+        
+        $filters.find('[name="filter-hosts-country"]').change(function () {
+
+            var country = $(this).val();
+
+            if (country == '0') {
+                return;
+            }
+
+            $filters.find('[name="filter-hosts-state"]').find('option[value!="0"]').remove();
+            $filters.find('[name="filter-hosts-city"]').find('option[value!="0"]').remove();
+
+            // For/In since we only have Keys to work with
+            for ( var state in cities[country] ) {
+                $filters.find('[name="filter-hosts-state"]').append($("<option></option>")
+                        .attr("value", state)
+                        .attr("data-country", country)
+                        .text(state));
+            }
         });
 
         $filters.find('[name="filter-hosts-state"]').change(function () {
 
             var state = $(this).val(),
+                country = $(this).find('option[value="' + state + '"]').data('country'),
                 i;
 
-            if (state == '0') {
-                return;
+            if (country == '0' || state == '0') {
+                return
             }
 
             $filters.find('[name="filter-hosts-city"]').find('option[value!="0"]').remove();
 
-            for (i = 0; i < cities[state].length; i++) {
+            for (i = 0; i < cities[country][state].length; i++) {
                 $filters.find('[name="filter-hosts-city"]').append($("<option></option>")
-                        .attr("value",cities[state][i])
-                        .text(cities[state][i]));
+                        .attr("value", cities[country][state][i] )
+                        .attr("data-country", country )
+                        .attr("data-state", state )
+                        .text( cities[country][state][i] ));
             }
         });
     });

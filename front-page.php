@@ -35,48 +35,78 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 
 			<?php if ( ! empty( $users ) ) : ?>
 				<?php
-				$states = array();
+				$countries = array();
 				foreach ( $users as $user ) {
 
-					$state = get_user_meta( $user->ID, 'state', true );
-					$city  = get_user_meta( $user->ID, 'city', true );
+					$country = get_user_meta( $user->ID, 'country', true );
+                    $country = trim( $country );
+					$state   = get_user_meta( $user->ID, 'state', true );
+					$city    = get_user_meta( $user->ID, 'city', true );
 
-					if ( ! isset( $states[ $state ] ) ) {
-						$states[ ucwords( $state ) ] = array();
+					// Long-form for the Dropdown, show only "USA" for each Host in the List for brevity
+					$country = preg_replace( '/(?:The\s)?United\sStates(?:\sof America)?/i', 'United States of America', $country );
+                    if ( strtolower( $country ) == 'usa' || strtolower( $country ) == 'us' ) $country = 'United States of America';
+
+					if ( ! isset( $countries[ $country ][ ucwords( $state ) ][ $city ] ) ) {
+						$countries[ $country ][ ucwords( $state ) ][ $city ] = array();
 					}
 
-					if ( ! in_array( $city, $states[ $state ] ) ) {
-						$states[ $state ][] = ucwords( $city );
+					if ( ! in_array( $city, $countries[ $country ][ ucwords( $state ) ][ $city ] ) ) {
+						$countries[ $country ][ ucwords( $state ) ][ $city ] = ucwords( $city );
 					}
+                    
 				}
 
-				asort( $states );
-				foreach ( $states as $cities ) {
-					sort( $cities );
+				asort( $countries );
+				foreach ( $countries as $states ) {
+                    
+					sort( $states );
+                    
+					foreach( $states as $cities ) {
+                        
+						sort( $cities );
+                        
+					}
+                    
 				}
 				?>
 				<div class="filter-hosts row">
-					<div class="state columns small-12 medium-6">
-						<select name="filter-hosts-state">
-							<option value="0">- Choose a State -</option>
-							<?php foreach ( $states as $state => $cities ) : ?>
-								<option value="<?php echo $state; ?>">
-									<?php echo $state; ?>
+					<div class="country columns small-12 medium-4">
+						<select name="filter-hosts-country">
+							<option value="0">- Choose a Country -</option>
+							<?php foreach ( $countries as $country => $states ) : ?>
+								<option value="<?php echo $country; ?>">
+									<?php echo $country; ?>
 								</option>
 							<?php endforeach; ?>
 						</select>
 					</div>
 
-					<div class="city columns small-12 medium-6">
-						<select name="filter-hosts-city">
-							<option value="0">- Choose a City -</option>
-							<?php foreach ( $states as $state => $cities ) : ?>
-								<?php foreach ( $cities as $city ) : ?>
-									<option value="<?php echo $city; ?>" data-state="<?php echo $state; ?>">
-										<?php echo $city; ?>
+					<div class="state columns small-12 medium-4">
+						<select name="filter-hosts-state">
+							<option value="0">- Choose a State -</option>
+							<?php foreach ( $countries as $country => $states ) : ?>
+								<?php foreach ( $states as $state => $cities ) : ?>
+									<option value="<?php echo ucwords( $state ); ?>" data-country="<?php echo $country; ?>">
+										<?php echo $state; ?>
 									</option>
 								<?php endforeach; ?>
 							<?php endforeach; ?>
+						</select>
+					</div>
+                    
+					<div class="city columns small-12 medium-4">
+						<select name="filter-hosts-city">
+							<option value="0">- Choose a City -</option>
+							<?php foreach ( $countries as $country => $states ) : 
+								foreach ( $states as $state => $cities ) : 
+									foreach ( $cities as $city ) : ?>
+										<option value="<?php echo $city; ?>" data-country="<?php echo $country; ?>" data-state="<?php echo $state; ?>">
+											<?php echo $city; ?>
+										</option>
+									<?php endforeach;
+								endforeach;
+							endforeach; ?>
 						</select>
 					</div>
 				</div>
@@ -93,9 +123,9 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 						$country = preg_replace( '/(?:The\s)?United\sStates(?:\sof\sAmerica)?/i', 'USA', $country );
 						if ( $country == 'US' ) $country = 'USA'; // To grab those outliers
                                             
-                        ?>
+						?>
 
-						<li data-groups='["<?php echo $city; ?>", "<?php echo $state; ?>", "<?php echo $country; ?>"]'>
+						<li data-groups='["<?php echo $city; ?>", "<?php echo $state; ?>", "<?php echo ( $country == 'USA' ) ? 'United States of America' : $country; ?>"]'>
 							<div class="crash-pad">
 								<h2><?php echo $city; ?></h2>
 
