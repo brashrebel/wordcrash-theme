@@ -84,15 +84,22 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 
 			<?php if ( ! empty( $users ) ) { ?>
 				<ul class="crash-pad-list small-block-grid-1 medium-block-grid-2 large-block-grid-4 user-grid">
-					<?php foreach ( $users as $user ) { ?>
-						<?php $city = get_user_meta( $user->ID, 'city', true ); ?>
-						<?php $state = get_user_meta( $user->ID, 'state', true ); ?>
+					<?php foreach ( $users as $user ) : 
+						$city = get_user_meta( $user->ID, 'city', true );
+						$state = get_user_meta( $user->ID, 'state', true );
+						$country = get_user_meta( $user->ID, 'country', true );
+						$country = trim( $country );
+						// USA USA USA
+						$country = preg_replace( '/(?:The\s)?United\sStates(?:\sof\sAmerica)?/i', 'USA', $country );
+						if ( $country == 'US' ) $country = 'USA'; // To grab those outliers
+                                            
+                        ?>
 
-						<li data-groups='["<?php echo $city; ?>", "<?php echo $state; ?>"]'>
+						<li data-groups='["<?php echo $city; ?>", "<?php echo $state; ?>", "<?php echo $country; ?>"]'>
 							<div class="crash-pad">
 								<h2><?php echo $city; ?></h2>
 
-								<h3><?php echo $state; ?></h3>
+								<h3><?php echo $state; ?>, <?php echo $country; ?></h3>
 
 								<p><strong>Pets:</strong> <?php echo get_user_meta( $user->ID, 'pets', true ); ?><br/>
 									<strong>Capacity:</strong> <?php echo get_user_meta( $user->ID, 'capacity', true ); ?>
@@ -103,7 +110,7 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 								</a>
 							</div>
 						</li>
-					<?php } ?>
+					<?php endforeach; ?>
 				</ul>
 			<?php } ?>
 		</main>
