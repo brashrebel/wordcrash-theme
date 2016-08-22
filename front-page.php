@@ -131,7 +131,7 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 						$country = trim( $country );
 						// USA USA USA
 						$country = preg_replace( '/(?:The\s)?United\sStates(?:\sof\sAmerica)?/i', 'USA', $country );
-						if ( $country == 'US' ) $country = 'USA'; // To grab those outliers
+						if ( strtolower( $country ) == 'us' || strtolower( $country ) == 'usa' ) $country = 'USA'; // To grab those outliers
                                             
 						?>
 
