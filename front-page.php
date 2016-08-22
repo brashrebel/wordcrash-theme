@@ -65,16 +65,16 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 					$usa = $countries['United States of America'];
 					unset( $countries['United States of America'] );
                     
-					$countries = array( 'United States of America' => $usa ) + $countries;
+					$countries = array_merge( array( 'United States of America' => $usa ), $countries );
                     
 				}
             
-				foreach ( $countries as &$states ) {
-					ksort( $states );
+				foreach ( $countries as &$states_pointer ) {
+					ksort( $states_pointer );
                     
-					foreach( $states as &$cities ) {
+					foreach( $states as &$cities_pointer ) {
                         
-						sort( $cities );
+						sort( $cities_pointer );
                         
 					}
                     
