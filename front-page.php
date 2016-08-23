@@ -44,8 +44,7 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 					$city    = get_user_meta( $user->ID, 'city', true );
 
 					// Long-form for the Dropdown, show only "USA" for each Host in the List for brevity
-					$country = preg_replace( '/(?:The\s)?United\sStates(?:\sof America)?/i', 'United States of America', $country );
-                    if ( strtolower( $country ) == 'usa' || strtolower( $country ) == 'us' ) $country = 'United States of America';
+					if ( strtolower( $country ) == 'usa' ) $country = 'United States of America';
 
 					if ( ! isset( $countries[ $country ][ ucwords( $state ) ][ $city ] ) ) {
 						$countries[ $country ][ ucwords( $state ) ][ $city ] = array();
@@ -131,7 +130,7 @@ $users = get_users( array( 'role' => 'subscriber' ) );
                                             
 						?>
 
-						<li data-groups='["<?php echo $city; ?>", "<?php echo $state; ?>", "<?php echo ( $country == 'USA' ) ? 'United States of America' : $country; ?>"]'>
+						<li data-groups='["<?php echo $city; ?>", "<?php echo $state; ?>", "<?php echo ( strtolower( $country ) == 'usa' ) ? 'United States of America' : $country; ?>"]'>
 							<div class="crash-pad">
 								<h2><?php echo $city; ?></h2>
 
