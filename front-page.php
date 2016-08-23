@@ -94,7 +94,7 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 
 					<div class="state columns small-12 medium-4">
 						<select name="filter-hosts-state">
-							<option value="0">- Choose a State -</option>
+							<option value="0">- Choose a State/Province -</option>
 							<?php foreach ( $countries as $country => $states ) : ?>
 								<?php foreach ( $states as $state => $cities ) : ?>
 									<option value="<?php echo ucwords( $state ); ?>" data-country="<?php echo $country; ?>">
@@ -128,10 +128,6 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 						$city = get_user_meta( $user->ID, 'city', true );
 						$state = get_user_meta( $user->ID, 'state', true );
 						$country = get_user_meta( $user->ID, 'country', true );
-						$country = trim( $country );
-						// USA USA USA
-						$country = preg_replace( '/(?:The\s)?United\sStates(?:\sof\sAmerica)?/i', 'USA', $country );
-						if ( strtolower( $country ) == 'us' || strtolower( $country ) == 'usa' ) $country = 'USA'; // To grab those outliers
                                             
 						?>
 
