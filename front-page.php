@@ -53,30 +53,30 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 					if ( ! in_array( $city, $countries[ $country ][ ucwords( $state ) ] ) ) {
 						$countries[ $country ][ ucwords( $state ) ][ $city ] = ucwords( $city );
 					}
-                    
+
                 }
 
 				ksort( $countries );
-            
-				// USA at the top            
+
+				// USA at the top
 				if ( isset( $countries['United States of America'] ) ) {
-                    
+
 					$usa = $countries['United States of America'];
 					unset( $countries['United States of America'] );
-                    
+
 					$countries = array_merge( array( 'United States of America' => $usa ), $countries );
-                    
+
 				}
-            
+
 				foreach ( $countries as &$states_pointer ) {
 					ksort( $states_pointer );
-                    
-					foreach( $states as &$cities_pointer ) {
-                        
+
+					foreach( $states_pointer as &$cities_pointer ) {
+
 						sort( $cities_pointer );
-                        
+
 					}
-                    
+
 				}
 				?>
 				<div class="filter-hosts row">
@@ -103,12 +103,12 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 							<?php endforeach; ?>
 						</select>
 					</div>
-                    
+
 					<div class="city columns small-12 medium-4">
 						<select name="filter-hosts-city">
 							<option value="0">- Choose a City -</option>
-							<?php foreach ( $countries as $country => $states ) : 
-								foreach ( $states as $state => $cities ) : 
+							<?php foreach ( $countries as $country => $states ) :
+								foreach ( $states as $state => $cities ) :
 									foreach ( $cities as $city ) : ?>
 										<option value="<?php echo $city; ?>" data-country="<?php echo $country; ?>" data-state="<?php echo $state; ?>">
 											<?php echo $city; ?>
@@ -123,11 +123,11 @@ $users = get_users( array( 'role' => 'subscriber' ) );
 
 			<?php if ( ! empty( $users ) ) { ?>
 				<ul class="crash-pad-list small-block-grid-1 medium-block-grid-2 large-block-grid-4 user-grid">
-					<?php foreach ( $users as $user ) : 
+					<?php foreach ( $users as $user ) :
 						$city = get_user_meta( $user->ID, 'city', true );
 						$state = get_user_meta( $user->ID, 'state', true );
 						$country = get_user_meta( $user->ID, 'country', true );
-                                            
+
 						?>
 
 						<li data-groups='["<?php echo $city; ?>", "<?php echo $state; ?>", "<?php echo ( strtolower( $country ) == 'usa' ) ? 'United States of America' : $country; ?>"]'>
