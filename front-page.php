@@ -42,6 +42,10 @@ $users = get_users( array( 'role' => 'subscriber' ) );
                     $country = trim( $country );
 					$state   = get_user_meta( $user->ID, 'state', true );
 					$city    = get_user_meta( $user->ID, 'city', true );
+					
+					if ( empty( $country ) || 
+					   empty( $state ) ||
+						empty( $city ) ) continue;
 
 					// Long-form for the Dropdown, show only "USA" for each Host in the List for brevity
 					if ( strtolower( $country ) == 'usa' ) $country = 'United States of America';
