@@ -36,8 +36,13 @@ add_action( 'after_setup_theme', '_wordcrash_setup_theme' );
 add_action( 'init', '_wordcrash_register_scripts' );
 add_action( 'wp_enqueue_scripts', '_wordcrash_load_scripts' );
 add_action( 'after_setup_theme', '_wordcrash_load_nav_menus' );
-add_action( 'widgets_init', '_wordcrash_load_sidebars' );
+// add_action( 'widgets_init', '_wordcrash_load_sidebars' );
 add_action( 'wp_head', '_wordcrash_load_favicon' );
+
+function wordcrash_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'wordcrash_content_width', 900 );
+}
+add_action( 'after_setup_theme', 'wordcrash_content_width', 0 );
 
 /**
  * Setup theme properties and stuff.
@@ -154,6 +159,10 @@ function _wordcrash_register_scripts() {
 			);
 		}
 	}
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
 
 /**
@@ -238,6 +247,27 @@ function _wordcrash_load_favicon() {
 	<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri() . '/assets/images/favicon.ico'; ?>"/>
 	<?php
 }
+
+	if ( ! function_exists( 'wordcrash_widgets_init' ) ) :
+	/**
+	* Register widget areas and custom widgets.
+	*
+	* @link http://codex.wordpress.org/Function_Reference/register_sidebar
+	*/
+	function wordcrash_widgets_init() {
+
+		register_sidebar( array(
+			'name' => __( 'Wordcrash Sidebar', 'wordcrash' ),
+			'id' => 'wordcrash-sidebar',
+			'description' => __( 'Appears on posts and pages except the full width template.', 'wordcrash' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title' => '<h5>',
+			'after_title' => '</h5>',
+		));
+	}
+endif;
+add_action( 'widgets_init', 'wordcrash_widgets_init' );
 
 // Include shortcodes
 require_once __DIR__ . '/includes/shortcodes/button.php';
